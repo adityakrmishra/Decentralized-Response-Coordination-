@@ -33,7 +33,7 @@ This project combines **decentralized resource allocation** via smart contracts 
 
 1. **Clone Repository**
    ```bash
-   git clone https://github.com/adityakrmishra/decentralized-response-coordination.git
+   git clone https://github.com/adityakrmishra/Decentralized-Response-Coordination-.git
    cd decentralized-response-coordination
    ```
 2. Install Dependencies
@@ -82,15 +82,8 @@ MIT License. See LICENSE for details.
 # Project Structure
 ```
 decentralized-response-coordination/
-├── blockchain/
-│ ├── contracts/
-│ │ ├── ResourceAllocation.sol
-│ │ ├── EmergencyRegistry.sol
-│ │ └── SupplyChainTracker.sol
-│ ├── migrations/
-│ │ ├── 1_deploy_core.js
-│ │ └── 2_deploy_registry.js
-│ ├── test/
+├── tests/
+│ ├── blockchain/
 │ │ ├── unit/
 │ │ │ ├── allocation-tests.js
 │ │ │ ├── registry-tests.js
@@ -104,8 +97,35 @@ decentralized-response-coordination/
 │ │ │ ├── reentrancy-test.js
 │ │ │ └── overflow-test.js
 │ │ └── helpers/
-│ │ ├── test-utils.js
-│ │ └── mock-data.js
+│ │   ├── test-utils.js
+│ │   └── mock-data.js
+│ ├── frontend/
+│ │ ├── unit/
+│ │ │ ├── Header.test.jsx
+│ │ │ ├── MapInterface.test.jsx
+│ │ │ └── hooks.test.js
+│ │ └── integration/
+│ │   ├── full-flow.cy.js
+│ │   └── reporting.cy.js
+│ ├── backend/
+│ │ ├── unit/
+│ │ │ ├── controllers.test.js
+│ │ │ └── services.test.js
+│ │ └── integration/
+│ │   ├── api-tests.js
+│ │   └── drone-tests.js
+│ └── drone-av/
+│   ├── navigation-tests.py
+│   └── hardware-tests.py
+│
+├── blockchain/
+│ ├── contracts/
+│ │ ├── ResourceAllocation.sol
+│ │ ├── EmergencyRegistry.sol
+│ │ └── SupplyChainTracker.sol
+│ ├── migrations/
+│ │ ├── 1_deploy_core.js
+│ │ └── 2_deploy_registry.js
 │ ├── truffle-config.js
 │ └── package.json
 │
@@ -123,8 +143,8 @@ decentralized-response-coordination/
 │ │ │ │ ├── ReportPortal.jsx
 │ │ │ │ └── MediaUpload.jsx
 │ │ │ └── common/
-│ │ │ ├── Header.jsx
-│ │ │ └── Footer.jsx
+│ │ │   ├── Header.jsx
+│ │ │   └── Footer.jsx
 │ │ ├── contexts/
 │ │ │ └── BlockchainContext.jsx
 │ │ ├── hooks/
@@ -140,14 +160,6 @@ decentralized-response-coordination/
 │ │ │ └── api.js
 │ │ ├── App.jsx
 │ │ └── index.js
-│ ├── tests/
-│ │ ├── unit/
-│ │ │ ├── Header.test.jsx
-│ │ │ ├── MapInterface.test.jsx
-│ │ │ └── hooks.test.js
-│ │ └── integration/
-│ │ ├── full-flow.cy.js
-│ │ └── reporting.cy.js
 │ ├── .eslintrc
 │ ├── .prettierrc
 │ └── package.json
@@ -174,13 +186,6 @@ decentralized-response-coordination/
 │ │ ├── config/
 │ │ │ ├── db.js
 │ │ │ └── env.js
-│ │ ├── tests/
-│ │ │ ├── unit/
-│ │ │ │ ├── controllers.test.js
-│ │ │ │ └── services.test.js
-│ │ │ └── integration/
-│ │ │ ├── api-tests.js
-│ │ │ └── drone-tests.js
 │ │ └── server.js
 │ ├── Dockerfile
 │ └── package.json
@@ -196,20 +201,17 @@ decentralized-response-coordination/
 │ ├── config/
 │ │ ├── flight-params.yaml
 │ │ └── safety-rules.yaml
-│ ├── tests/
-│ │ ├── navigation-tests.py
-│ │ └── hardware-tests.py
 │ └── scripts/
-│ ├── deploy.sh
-│ └── maintenance.sh
+│   ├── deploy.sh
+│   └── maintenance.sh
 │
 ├── infrastructure/
 │ ├── terraform/
 │ │ ├── main.tf
 │ │ └── variables.tf
 │ └── docker/
-│ ├── compose.prod.yml
-│ └── compose.dev.yml
+│   ├── compose.prod.yml
+│   └── compose.dev.yml
 │
 ├── docs/
 │ ├── API.md
@@ -218,15 +220,15 @@ decentralized-response-coordination/
 │
 ├── .github/
 │ └── workflows/
-│ ├── ci.yml
-│ └── cd.yml
+│   ├── ci.yml
+│   └── cd.yml
 │
 ├── scripts/
 │ ├── setup-env.sh
 │ └── codegen/
-│ ├── contract-abis.js
-│ └── type-definitions.js
-│── requiremenrs.txt
+│   ├── contract-abis.js
+│   └── type-definitions.js
+│
 ├── .env.example
 ├── .gitignore
 ├── package.json

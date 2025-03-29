@@ -1,0 +1,122 @@
+@import 'variables';
+
+// Reset and base styles
+@import-normalize;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: $font-primary;
+  line-height: map-get($line-heights, normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  transition: $transition-base;
+}
+
+// Typography
+@each $heading, $size in $font-sizes {
+  #{$heading} {
+    font-size: $size;
+    line-height: map-get($line-heights, tight);
+    margin: map-get($spacing-scale, 3) 0 map-get($spacing-scale, 2);
+  }
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: $transition-base;
+
+  &:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+}
+
+// Utility Classes
+@each $name, $value in $spacing-scale {
+  .m-#{$name} { margin: $value !important; }
+  .p-#{$name} { padding: $value !important; }
+  .gap-#{$name} { gap: $value !important; }
+}
+
+.d-block { display: block; }
+.d-flex { display: flex; }
+.d-grid { display: grid; }
+
+.text-center { text-align: center; }
+.text-accent { color: var(--color-accent); }
+
+@each $bp, $size in $breakpoints {
+  @media (min-width: $size) {
+    .d-#{$bp}-none { display: none !important; }
+    .d-#{$bp}-block { display: block !important; }
+  }
+}
+
+// Components
+.header {
+  background: rgba(var(--color-background), 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: map-get($shadows, sm);
+}
+
+.button {
+  padding: map-get($spacing-scale, 2) map-get($spacing-scale, 3);
+  border-radius: 8px;
+  font-weight: 600;
+  transition: $transition-base;
+  
+  &--primary {
+    background: var(--color-primary);
+    color: white;
+    
+    &:hover {
+      background: darken($color-primary, 10%);
+    }
+  }
+}
+
+.form-control {
+  padding: map-get($spacing-scale, 2);
+  border: 1px solid rgba(var(--color-text), 0.1);
+  border-radius: 4px;
+  background: rgba(var(--color-background), 0.8);
+  transition: $transition-base;
+
+  &:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(var(--color-primary), 0.2);
+  }
+}
+
+// Animations
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.loading-pulse {
+  animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+// Responsive Mixin
+@mixin respond-above($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    $value: map-get($breakpoints, $breakpoint);
+    @media (min-width: $value) { @content; }
+  } @else {
+    @warn "Unknown breakpoint `#{$breakpoint}`";
+  }
+}

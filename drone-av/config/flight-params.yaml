@@ -1,0 +1,34 @@
+# Flight Control Parameters
+flight_limits:
+  max_altitude: 120.0  # meters (MSL)
+  max_speed: 18.0      # m/s
+  max_ascent_rate: 5.0  # m/s
+  max_descent_rate: 3.0 # m/s
+  min_battery_takeoff: 30.0 # % 
+
+geofencing:
+  enabled: true
+  polygon: 
+    - [37.7749, -122.4194]  # SF
+    - [37.8085, -122.2943]
+    - [37.7163, -122.3875]
+  max_radius: 2000.0  # meters
+
+battery:
+  warning_level: 25.0  # %
+  critical_level: 15.0  # %
+  voltage_cutoff: 14.8  # V
+
+autonomous:
+  waypoint_accept_radius: 2.0  # meters
+  obstacle_detection_range: 10.0 # meters
+  rth_altitude: 50.0  # meters
+
+communication:
+  telemetry_interval: 1000  # ms
+  command_timeout: 5000     # ms
+  max_retries: 3
+
+payload:
+  max_weight: 5.0    # kg
+  max_dimensions: [0.5, 0.5, 0.3]  # LxWxH (meters)
